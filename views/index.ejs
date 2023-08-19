@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Data Page</title>
+</head>
+<body>
+    <form action="/" method="post">
+        <label>USERNAME: </label>
+        <input type="text" name="username" id="username" required>
+        <label>PASSWORD: </label>
+        <input type="password" name="password" id="password" required>
+        <label>EMAIL: </label>
+        <input type="email" name="email" id="email" required>
+        <button type="submit">Submit</button>
+    </form>
+  <h2>User Data</h2>
+  <ul>
+    <% users.forEach(user => {%>
+      <li><%= user.username %> - <%= user.email %>
+        <form action="/delete" method="post">
+          <input type="hidden" value="<%= user.id %>" name="userId">
+          <button type="submit">Delete</button>
+        </form></li>
+    <%}) %>
+  </ul>
+</body>
+</html>
